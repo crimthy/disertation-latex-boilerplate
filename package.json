@@ -1,0 +1,13 @@
+{
+  "name": "latex-dissertation-boilerplate",
+  "version": "0.1.0",
+  "scripts": {
+    "build-pdf-linux": "./scripts/linux/build.sh pdf",
+    "build-dvi-linux": "./scripts/linux/build.sh dvi",
+    "view-pdf-linux": "./scripts/linux/view-pdf.sh",
+    "build-pdf": "node scripts/build-pdf.js",
+    "clear": "node scripts/clear.js || true",
+    "git-clear-history": "",
+    "git-commit": "node scripts/git-commit.js"
+  }
+}
