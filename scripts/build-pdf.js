@@ -10,7 +10,5 @@ exec(`pdflatex -output-directory=${directory} -output-format=pdf -synctex=1 -int
     console.log(`${err}`)
     return
   }
-
-  console.log(`stdout: ${stdout}`)
-  console.log(`stderr: ${stderr}`)
+  console.log(`${stdout}`)
 });

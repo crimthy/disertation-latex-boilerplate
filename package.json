@@ -8,6 +8,7 @@
     "build-pdf": "node scripts/build-pdf.js",
     "clear": "node scripts/clear.js || true",
     "git-clear-history": "",
-    "git-commit": "node scripts/git-commit.js"
+    "git-commit": "node scripts/git-commit.js",
+    "update-lib": ""
   }
 }

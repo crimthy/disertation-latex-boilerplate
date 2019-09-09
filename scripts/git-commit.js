@@ -10,6 +10,5 @@ exec(`git add -A && git commit -m "${message}"`, (err, stdout, stderr) => {
       console.log(`${err}`)
       return
     }
-    console.log(`stdout: ${stdout}`)
-    console.log(`stderr: ${stderr}`)
+    console.log(`${stdout}`)
   });
