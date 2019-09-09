@@ -1,0 +1,11 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lib/code-importer}[2019 LBoiler package]
+ 
+\RequirePackage{listings}
+
+\newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
+\lstinputpath{./media/code/}
+
+\newcommand{\insertCodeListing}[1]{
+    \lstinputlisting{#1}
+}

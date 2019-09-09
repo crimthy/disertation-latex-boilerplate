@@ -1,12 +1,12 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
- 
-\usepackage[red]{test}
- 
+\usepackage{import} 
+\subimport*{lib/}{image-manager}
 \makeindex
- 
-\title{Package Example}
-\author{Team Learn ShareLaTeX}
+
+
+\title{Test}
+\author{Student name}
 \date{ }
  
 \begin{document}
@@ -25,8 +25,12 @@ at the beginning and a new indentation is set.
 Also, there's a special command for \important{important!words} that will be
 printed in a special \important{colour} depending on the parameter used in the
 \important{package} importation statement. Because it's \important{important}
-hey
+hey s1  a2
+\iflinux
+\newcommand{\libpath}{../usr}
+\fi
+fdsf12
 \printindex
- 
+
 \end{document}
 

@@ -1,0 +1,17 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lib/image-manager}[2019 LBoiler package]
+ 
+\RequirePackage{graphicx}
+\graphicspath{ {./media/images/} }
+
+\newcounter{globalImageCounter}
+\setcounter{globalImageCounter}{1}
+\newcommand{\printImage}[2]{
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{#1}
+    \end{center}
+    \begin{center}
+            Рисунок \theglobalImageCounter – {#2}\\
+    \end{center}
+\stepcounter{globalImageCounter}
+}
