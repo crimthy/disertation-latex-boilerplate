@@ -6,6 +6,6 @@
 \newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
 \lstinputpath{./media/code/}
 
-\newcommand{\insertCodeListing}[1]{
-    \lstinputlisting{#1}
+\newcommand{\insertCodeListing}[2]{
+    \lstinputlisting[numbers=left, caption={#2}]{#1}
 }
