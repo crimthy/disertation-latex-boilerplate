@@ -1,4 +1,3 @@
-
 [WIP]
 Latex boilerplate and set of tools for easy edit, contribute and deploy magister dissertation
 
