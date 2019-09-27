@@ -25,6 +25,7 @@ const typeToProcessorDefaultMap = {
 class TemplateEngine {
     constructor(build){
         this.file = build.file
+        
         // concat array ??
         this.processorsMap = build.processorsMap
     }

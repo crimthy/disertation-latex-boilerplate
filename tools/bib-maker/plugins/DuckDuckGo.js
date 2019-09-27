@@ -3,21 +3,26 @@ const request = require('sync-request');
 const cheerio = require('cheerio');
 const { SiteDetails  } = require('./types-structures');
 const puppeteer = require('puppeteer');
-const { Indicators } = require('./utils');
+const { Indicators, defaultBackgroundTextStyles } = require('./utils');
 
 const concatenator=' ';
 
 const endpoint = `https://duckduckgo.com`;
 const chromeUserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36';
 
+const pluginName = 'DuckDuckGoSearch';
+
+const formatedLogHeader = () => {
+    return `[${defaultBackgroundTextStyles.txtBgMagenta(pluginName)}]:`;
+}
+
 function buildDetailes(links) {
     let result = [];
     links.forEach(url => {
-        console.log(`${Indicators.Info} Processing ${url}`);
+        console.log(`${Indicators.Info} ${formatedLogHeader()} Processing ${url}`);
         const body = makeRequest(url);
         const $ = cheerio.load(body);
         let title = $("title").text().replace(/\n/g, '').replace(/\s\s+/g, '');
-
         result.push(new SiteDetails(title, url));
     });
     return result;
@@ -109,7 +114,7 @@ async function exec(searchQuery, requiredCount) {
 
 
 class DuckDuckGoSearch {
-    constructor(searchQuery, requiredCount =  10) {
+    constructor(searchQuery, requiredCount) {
         this.searchQuery = searchQuery.split(' ').map(item => item.replaceAll('_',concatenator));
         this.requiredCount = requiredCount;
         this.result = [];
@@ -121,10 +126,10 @@ class DuckDuckGoSearch {
 
     async parse() {
         for (let query of this.searchQuery) {
-            console.log(`${Indicators.Info} Starting process query :'${query}' for DuckDuckGo parser`);
+            console.log(`${Indicators.Info} ${formatedLogHeader()} Starting process query :'${query}' for DuckDuckGo parser`);
             const result = await exec(query, this.requiredCount);
             this.result = this.result.concat(result);
-            console.log(`${Indicators.Ok} Query :'${query}' for DuckDuckGo parser succesfully processed`);
+            console.log(`${Indicators.Ok} ${formatedLogHeader()} Query '${query}' for DuckDuckGo parser succesfully processed`);
         }
         return this.result;
     }

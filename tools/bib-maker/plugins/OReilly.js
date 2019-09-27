@@ -2,10 +2,17 @@ const BibTypes = require('./types')
 const request = require('sync-request');
 const cheerio = require('cheerio')
 const { BookDetails } = require('./types-structures');
-const { Indicators } = require('./utils');
+const { Indicators, defaultBackgroundTextStyles } = require('./utils');
 
 const resultsPerPage = 16;
 const chromeUserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36';
+
+const pluginName = 'OReillySearch';
+
+const formatedLogHeader = () => {
+    return `[${defaultBackgroundTextStyles.txtBgBlue(pluginName)}]:`;
+}
+
 const concatenator='+';
 const requestMarksMap = Object.freeze({
     query: '#{{query}}',
@@ -38,7 +45,7 @@ function parseResponse(body, query, requiredCount) {
     const $ = cheerio.load(body);
     const notFound = $(".fsxl");
     let result = [];
-    if (notFound.length){ console.log(`${Indicators.Error} Can't found any book for "${query}" request`); return; }
+    if (notFound.length){ console.log(`${Indicators.Error} ${formatedLogHeader()} Can't found any book for "${query}" request`); return; }
     const countLabel =  $(".bread_crumb").contents().first().text();
     const findedNumberMatch = countLabel.match(/\s.\d+/);
     const findedNumber = new Number(findedNumberMatch[0]);
@@ -65,7 +72,7 @@ function scrapePage(url, count) {
         if ( i >= count ) return;
         const target = cheerioObject($(item).html());
         const link = target(".learn-more").attr("href");
-        console.log(`${Indicators.Info} Processing ${link}`);
+        console.log(`${Indicators.Info} ${formatedLogHeader()} Processing ${link}`);
         const details = scrapeDetails(link);
         result.push(details);
     });
@@ -112,7 +119,7 @@ function scrapeDetails(url) {
 
 const calculatePagesCount = (findedCount, requiredCount) => {
     if (findedCount < requiredCount) {
-        console.log(`${Indicators.Warning} Found less than necessary ${findedCount} < ${requiredCount}`);
+        console.log(`${Indicators.Warning} ${formatedLogHeader()} Found less than necessary ${findedCount} < ${requiredCount}`);
         return calculatePagesCount(findedCount, findedCount);
     } 
     const requiredPages = Math.ceil(requiredCount / resultsPerPage);
@@ -120,22 +127,23 @@ const calculatePagesCount = (findedCount, requiredCount) => {
 }
 
 class OReillySearch {
-    constructor(searchQuery, requiredCount = 20) {
+    constructor(searchQuery, requiredCount) {
         this.searchQuery = searchQuery.split(' ').map(item => item.replace('_',concatenator));
         this.requiredCount = requiredCount;
         this.result = [];
     }
+
     get type() {
         return BibTypes.book.type;
     }
 
     async parse() {
         this.searchQuery.forEach((query) => {
-            console.log(`${Indicators.Info} Starting process query :'${query}' for OReilly parser`);
+            console.log(`${Indicators.Info} ${formatedLogHeader()} Starting process query :'${query}' for OReilly parser`);
             const url = endpoint.replaceAll(requestMarksMap.pageNumber, '1').replaceAll(requestMarksMap.query, query);
             const result = parsePage(url, query, this.requiredCount);
             this.result = this.result.concat(result);
-            console.log(`${Indicators.Ok} Query :'${query}' for OReilly parser succesfully processed`);
+            console.log(`${Indicators.Ok} ${formatedLogHeader()} Query '${query}' for OReilly parser succesfully processed`);
         });
         return this.result;
     }

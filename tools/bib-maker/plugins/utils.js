@@ -33,7 +33,21 @@ const Indicators = {
     Warning : `${Colors.FgYellow}[W]${Colors.Reset}`
 }
 
+const textWithBackgroundColor = (bgColor, text) => {
+    return `${bgColor}${text}${Colors.Reset}`;
+}
+
+const defaultBackgroundTextStyles = {
+    txtBgRed: (text) => textWithBackgroundColor(Colors.BgRed, text),
+    txtBgBlue: (text) => textWithBackgroundColor(Colors.BgBlue, text),
+    txtBgCyan: (text) => textWithBackgroundColor(Colors.BgCyan, text),
+    txtBgMagenta: (text) => textWithBackgroundColor(Colors.BgMagenta, text),
+    txtBgBlack: (text) => textWithBackgroundColor(Colors.BgBlack, text),
+}
+
 module.exports = {
     Colors: Colors,
-    Indicators: Indicators
+    Indicators: Indicators,
+    textWithBackgroundColor: textWithBackgroundColor,
+    defaultBackgroundTextStyles: defaultBackgroundTextStyles
 }
