@@ -13,7 +13,7 @@ const chromeUserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 const pluginName = 'DuckDuckGoSearch';
 
 const formatedLogHeader = () => {
-    return `[${defaultBackgroundTextStyles.txtBgMagenta(pluginName)}]:`;
+    return `${defaultBackgroundTextStyles.txtBgMagenta(pluginName)}:`;
 }
 
 function buildDetailes(links) {

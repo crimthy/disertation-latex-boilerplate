@@ -1,0 +1,1 @@
+example: node index.js --clear --sites-count=15 --books-count=6 --sites-query="how_to_lear_js how_hashing_is_work" --books-query="blockchain java"

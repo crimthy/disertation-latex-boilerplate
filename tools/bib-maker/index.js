@@ -1,11 +1,8 @@
-const readline = require('readline');
 const fs = require('fs');
-const request = require('request');
-const cheerio = require('cheerio');
+const path = require('path');
 const BibTypes = require('./plugins/types');
-const { BookDetails, SiteDetails } = require('./plugins/types-structures');
 const PluginsManager = require('./PluginsManager')
-const { Indicators, Colors, defaultBackgroundTextStyles } = require('./plugins/utils');
+const { Indicators, defaultBackgroundTextStyles } = require('./plugins/utils');
 const program = require('commander');
 
 const omit = (obj, omitKeys) => {
@@ -21,17 +18,35 @@ const omitByPluginsList = (list) => {
     plugins = omit(plugins, list);
 }
 
+const clearDir = (dir) => {
+    if (fs.existsSync(dir)) {
+        fs.readdirSync(dir).forEach(function(file, index) {
+            let curPath = path.join(dir,file);
+            if (fs.lstatSync(curPath).isDirectory())
+                clearDir(curPath);
+            else
+                fs.unlinkSync(curPath);
+        });
+    }
+    console.log(`${Indicators.Ok} Build forlder is empty now`);
+}
+
 
 const saveToFile = (str, fileName) => {
-
+    const savePath =  path.join(__dirname, 'build', `${fileName}Builded.txt`)
+    fs.writeFile(savePath, str, function(err) {
+        if(err) { console.log(`${Indicators.Error} Unable to save result for ${fileName} to ${savePath}, maybe path not exist?`); }
+        console.log(`${Indicators.Ok} ${fileName} successfully saved to ${savePath}`);
+    }); 
 }
 
-const buildPlaneText = (arr) => {
-    console.log(arr.length)
+const buildPlaneText = (arr, name) => {
+    const toSaveStr = arr.map(value => value.toPrintableString()).join('\n');
+    saveToFile(toSaveStr, name);
 }
 
-const buildLatexBibTemplate = (arr) => {
-
+const buildLatexBibTemplate = (arr, name) => {
+    // TODO
 }
 
 function exit() {
@@ -50,7 +65,7 @@ program
   .option('--sites-count <sitesCount>', `Specify a count of results for site type per each single query request, '--books-count' parameter required`)
   .option('--books-query <booksQuery>', `Specify a query for book type, '--sites-query' param required`)
   .option('--sites-query <sitesQuery>', `Specify a query for site type, '--books-query' param required`)
-  
+  .option('--clear', `Clear build directory, before start`);
 
 program.parse(process.argv);
 
@@ -69,6 +84,10 @@ if (!program.query){
 if (program.count && (program.sitesCount || program.booksCount)) { console.log(`${Indicators.Error} Only 'count' or ('books-count' && 'sites-count') in the same time`); exit(); }
 if (!program.count && (!program.sitesCount || !program.booksCount)) { console.log(`${Indicators.Error} Both'books-count' and 'sites-count' parameters required (or 'count' for all)`); exit(); }
 
+if (program.clear) {
+    console.log(`${Indicators.Info} Clearing build folder...`);
+    clearDir(path.join(__dirname, 'build'));
+}
 
 console.log(`${Indicators.Info} Loading available plugins...`);
 
@@ -83,14 +102,12 @@ Object.keys(plugins).forEach(pluginName => {
         pluginType === BibTypes.book.type ? 
             program.booksQuery : program.sitesQuery
             : program.query;
-    const usageCount = !(program.count) ?
+    const usageCount = !(program.count) ? defaultCount : 
         program.count ? program.count :
             pluginType === BibTypes.book.type ?
-                program.booksCount : program.sitesCount
-        : defaultCount;
+                program.booksCount : program.sitesCount;
     let pluginInstance = new plugins[pluginName](usageQuery, usageCount);
     pluginInstance.parse().then(result => {
-        program.formatToBibtex ? buildLatexBibTemplate(result) : buildPlaneText(result);
+        program.formatToBibtex ? buildLatexBibTemplate(result, pluginName) : buildPlaneText(result, pluginName);
     })
 })
-console.log("here")

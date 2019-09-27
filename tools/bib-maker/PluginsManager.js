@@ -1,8 +1,3 @@
-/*
-Usage: 
-let plugins = new PluginsManager().exports;
-let instance = new plugins["key"];
-*/
 const path = require('path');
 const fs = require('fs');
 

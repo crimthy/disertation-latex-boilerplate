@@ -1,5 +1,6 @@
+const { Indicators } = require('./utils');
 const sitePattern = `#{{title}} [Електронний ресурс] – Режим доступу до ресурсу: #{{url}}`
-const bookPattern = `#{{name}} / #{{author}} // #{{publisher}}, – #{{releaseDate}}. – #{{pagesString}}.`;
+const bookPattern = `#{{name}} / #{{author}} // #{{publisher}}, – #{{releaseDate}}. – #{{pages}}.`;
 
 const rnd = (min, max)  => {
     return Math.round(min - 0.5 + Math.random() * (max - min + 1));
@@ -7,7 +8,7 @@ const rnd = (min, max)  => {
 
 const randomizePages = (pagesCount) => {
     const skip = 15
-    if (pagesCount < 15) { console.log ("Is it really book?"); return '';}
+    if (pagesCount < skip) { console.log (`${Indicators.Error} Is it really book? Make your random pages by yourself`); return '';}
     const skipIntroPages = pagesCount - skip;
     const selectedPart = Math.floor(Math.random() * 3) + 1;
     const partSize = skipIntroPages / 3;

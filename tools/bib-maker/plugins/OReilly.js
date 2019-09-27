@@ -10,7 +10,7 @@ const chromeUserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 const pluginName = 'OReillySearch';
 
 const formatedLogHeader = () => {
-    return `[${defaultBackgroundTextStyles.txtBgBlue(pluginName)}]:`;
+    return `${defaultBackgroundTextStyles.txtBgBlue(pluginName)}:`;
 }
 
 const concatenator='+';
