@@ -2,6 +2,7 @@
 \ProvidesPackage{lib/image-manager}[2019 LBoiler package]
  
 \RequirePackage{graphicx}
+\RequirePackage{lib/caption}
 \graphicspath{ {./media/images/} }
 
 \newcounter{globalImageCounter}
@@ -10,8 +11,8 @@
     \begin{center}
         \includegraphics[width=0.5\textwidth]{#1}
     \end{center}
-    \begin{center}
-            Рисунок \theglobalImageCounter – {#2}\\
-    \end{center}
+    \begin{imageCaption}[H]
+        \caption{#2}
+    \end{imageCaption}
 \stepcounter{globalImageCounter}
 }

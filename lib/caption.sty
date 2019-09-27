@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lib/caption}[2019 LBoiler package]
+ 
+
+\RequirePackage{silence}
+\WarningFilter*{memoir}{You are using the caption package with the memoir class}
+
+\RequirePackage{caption}
+\RequirePackage{capt-of}
+\RequirePackage{float}
+
+\DeclareCaptionType{imageCaption}[Рисунок][Список зображень]
+\DeclareCaptionType{tableCaption}[Таблиця][Список таблиць]
+
+\DeclareCaptionLabelSeparator{longDash}{ $ - $ }
+
+% subsection numbering
+\usepackage{chngcntr}
+\counterwithin{imageCaption}{section}
+\counterwithin{tableCaption}{section}
+
+\captionsetup[imageCaption]{
+  %format=plain,
+  %justification=raggedright,
+  %]singlelinecheck=false,
+  %font=small,
+  %font={bf,sf},
+  labelsep=longDash
+}
+
+\captionsetup[tableCaption]{
+  %format=plain,
+  %justification=raggedright,
+  %singlelinecheck=false,
+  %font=small,
+  %font={bf,sf},
+  labelsep=longDash
+}

@@ -5,4 +5,5 @@ COUNT=$(( DELIM_COUNT - 1 ))
 BUILD_PATH="$(echo "$SCRIPT_DIR" | cut -d"/" -f1-${COUNT} )/build"
 FORMAT=${1}
 FILE_NAME=${2:-main.tex}
+COMPILER=${3:-pdflatex}
 mkdir -p build && pdflatex -output-directory=$BUILD_PATH -output-format=pdf -synctex=1 -interaction=nonstopmode -shell-escape $FILE_NAME

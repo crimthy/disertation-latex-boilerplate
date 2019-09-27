@@ -1,0 +1,41 @@
+\documentclass[]{lib/styles/default-style}
+
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\textcolor{gray75}\hsp}{0pt}{\Huge\bfseries}
+
+\begin{document}
+\chapter{Привітики}
+\section{}
+    \begin{imageCaption}[H]
+        \caption{Рисунок}
+    \end{imageCaption}
+
+    \section{}
+    \begin{imageCaption}[H]
+        \caption{Рисунок}
+    \end{imageCaption}
+    \section{}
+    \begin{tableCaption}[H]
+        \caption{Таблиця}
+    \end{tableCaption}
+\chapter{}
+\section{}
+    \begin{imageCaption}[H]
+        \caption{Рисунок}
+    \end{imageCaption}
+
+    \section{}
+    \begin{tableCaption}[H]
+        \caption{Таблиця}
+    \end{tableCaption}
+
+    \section{}
+    \begin{tableCaption}[H]
+        \caption{Таблиця}
+    \end{tableCaption}
+    \section{}
+    \printImage{cat}{description}
+    \printImage{cat}{description2}
+\end{document}  

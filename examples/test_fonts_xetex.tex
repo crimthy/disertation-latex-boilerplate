@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[british,russian,ukrainian]{babel}
+\usepackage{lipsum} % add nonsense text
+\usepackage{fontspec}
+\usepackage[14pt]{extsizes}
+\usepackage{setspace,amsmath}
+
+\usepackage{kantlipsum}
+\usepackage[left=20mm, top=15mm, right=15mm, bottom=15mm, nohead, footskip=10mm]{geometry}
+\usepackage{lib/image-manager}
+
+\newfontfamily\TimesNewRoman[Path = ./lib/fonts/]{TimesNewRoman}
+\newfontfamily\TimesNewerRoman[Path = ./lib/fonts/]{TimesNewerRoman}
+
+
+
+\begin{document}
+\hfill \break
+{\TimesNewRoman Hello, my good and dear friend, fuck you}
+\hfill \break
+{\TimesNewerRoman Hello, my good and dear friend, fuck you}
+
+\hfill \break
+{\TimesNewRoman Привіт друг, а не пошел бы ты в жопу}
+\hfill \break
+{\TimesNewerRoman Привіт друєї, а не пошел бы ты в жопу}
+\printImage{cat}{Привіт}
+\end{document}
