@@ -120,7 +120,7 @@ class DuckDuckGoSearch {
         this.result = [];
     }
 
-    get type() {
+    static type() {
         return BibTypes.site.type;
     }
 

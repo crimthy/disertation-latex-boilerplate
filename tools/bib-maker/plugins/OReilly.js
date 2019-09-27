@@ -133,7 +133,7 @@ class OReillySearch {
         this.result = [];
     }
 
-    get type() {
+    static type() {
         return BibTypes.book.type;
     }
 
