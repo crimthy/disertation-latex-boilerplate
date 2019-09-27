@@ -93,4 +93,4 @@ Object.keys(plugins).forEach(pluginName => {
         program.formatToBibtex ? buildLatexBibTemplate(result) : buildPlaneText(result);
     })
 })
-
+console.log("here")
