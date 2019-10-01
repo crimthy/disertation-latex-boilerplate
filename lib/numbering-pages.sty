@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lib/numbering-pages}[2019 LBoiler package]
+
+\RequirePackage{silence}
+\WarningFilter*{memoir}{You are using the caption package with the memoir class}
+
+\RequirePackage{fancyhdr}
+\RequirePackage[nomessages]{fp}
+
+\fancyhf{} %Clear header/footer
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{17pt}
+
+\fancypagestyle{empty-style} {
+  \pagestyle{fancy}
+}
+
+\fancypagestyle{no-numbered}{
+  \pagestyle{empty-style}
+}
+
+\fancypagestyle{default-numbered}{
+    \pagestyle{empty-style}
+    \makeatletter
+    \rhead{\thepage}
+    \makeatother
+}
+
+
+\fancypagestyle{default-numbered-inc}{
+  \FPeval{\result}{clip(\thepage+1)}%
+  \pagestyle{empty-style}
+  \makeatletter
+  \rhead{\result}
+  \makeatother
+}
+
+\fancypagestyle{default-numbered-dec}{
+  \FPeval{\result}{clip(\thepage-1)}%
+  \pagestyle{empty-style}
+  \makeatletter
+  \rhead{\result}
+  \makeatother
+}
+
