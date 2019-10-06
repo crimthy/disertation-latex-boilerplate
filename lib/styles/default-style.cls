@@ -20,6 +20,8 @@
 \RequirePackage{ulem}
 \RequirePackage[left=20mm, top=15mm, right=15mm, bottom=15mm, nohead, footskip=10mm]{geometry}
 \RequirePackage{enumitem}
+\RequirePackage{ragged2e}
+\RequirePackage{{calc}
 \setlist{leftmargin=15.5mm}
 
 % import utils libs
