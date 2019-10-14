@@ -1,0 +1,40 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lib/text}[2019 LBoiler package]
+
+\RequirePackage{silence}
+\WarningFilter*{memoir}{You are using the caption package with the memoir class}
+
+\newcommand{\leftAlignedWithCenterUnderlineSign}[2]{
+\begin{flushleft} 
+#1 \\
+\centerline{ \small #2 } 
+\end{flushleft}
+}
+
+\newcommand{\centerAlignedWithCenterUnderlineSign}[2]{
+\centering{\underline{#1}}
+\centerline{ \small #2 }
+}
+
+\newcommand{\withCenterUnderlineSign}[2]{
+#1 \\
+\begin{center} {\small {#2}} \end{center} 
+}
+
+\newcommand{\withRightUnderlineSign}[2]{
+#1 \\
+\begin{flushright} {\small #2 } \end{flushright} 
+}
+
+\newcommand{\withLeftUnderlineSign}[2]{
+#1 \\
+\begin{flushleft} {\small #2 } \end{flushleft} 
+}
+
+\newcommand{\underlined}[1]{
+    \uline{#1\hfill} 
+}
+
+\newcommand{\underlinedNoFill}[1]{
+    \uline{#1} 
+}

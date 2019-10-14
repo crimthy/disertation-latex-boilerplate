@@ -19,11 +19,20 @@
 \RequirePackage[left=20mm, top=10mm, right=10mm, bottom=20mm, nohead, footskip=10mm]{geometry}
 \RequirePackage{enumitem}
 \RequirePackage{ragged2e}
+\RequirePackage{mwe}
 \RequirePackage{calc}
 \RequirePackage{ulem}
+\RequirePackage{multirow}
+\RequirePackage{soulutf8}
 \setlist{leftmargin=15.5mm}
 \pagenumbering{gobble}
 
+\setlength{\RaggedRightParfillskip}{.25\textwidth plus 1fil}
+\setlength{\RaggedRightRightskip}{0pt plus .1\textwidth}
+\setlength{\RaggedRightParindent}{1em}
+
 % import utils libs
 \RequirePackage{lib/macro/global}
-\RequirePackage{lib/utils}
+\RequirePackage{lib/importers/additional-importer}
+
+\IfFileExists{lib/macro/user-info.sty}{\RequirePackage{lib/macro/user-info}}{}

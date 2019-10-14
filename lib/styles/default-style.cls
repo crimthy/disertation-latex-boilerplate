@@ -21,9 +21,18 @@
 \RequirePackage[left=20mm, top=15mm, right=15mm, bottom=15mm, nohead, footskip=10mm]{geometry}
 \RequirePackage{enumitem}
 \RequirePackage{ragged2e}
-\RequirePackage{{calc}
+\RequirePackage{calc}
+\RequirePackage{multirow}
+\RequirePackage{mwe}
+\RequirePackage{soulutf8}
 \setlist{leftmargin=15.5mm}
+
+\setlength{\RaggedRightParfillskip}{.25\textwidth plus 1fil}
+\setlength{\RaggedRightRightskip}{0pt plus .1\textwidth}
+\setlength{\RaggedRightParindent}{1em}
 
 % import utils libs
 \RequirePackage{lib/importers/default-importer}
 \RequirePackage{lib/macro/global}
+
+\IfFileExists{lib/macro/user-info.sty}{\RequirePackage{lib/macro/user-info}}{}
