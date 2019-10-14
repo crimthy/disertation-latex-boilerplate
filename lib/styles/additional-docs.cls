@@ -21,7 +21,7 @@
 \RequirePackage{ragged2e}
 \RequirePackage{mwe}
 \RequirePackage{calc}
-\RequirePackage{ulem}
+\RequirePackage[normalem]{ulem}
 \RequirePackage{multirow}
 \RequirePackage{soulutf8}
 \setlist{leftmargin=15.5mm}
