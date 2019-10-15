@@ -27,3 +27,14 @@
 }
 
 \end{document}
+
+
+\comment {
+    \newcommand{\underlined}[1]{
+        \uline{#1 \hfill}
+    }
+    
+    \newcommand{\underlinedNoFill}[1]{
+        \uline{#1} 
+    }
+}
