@@ -3,16 +3,8 @@
 
 \RequirePackage{indentfirst}
 \RequirePackage{extsizes}
-
-\newlength{\fivecharsapprox}
-\setlength{\fivecharsapprox}{6ex}
-
-\makeatletter
-\renewcommand\section{%
-  \clearpage\@startsection {section}{1}%
-    {\fivecharsapprox}%
-    {-1em \@plus -1ex \@minus -.2ex}%
-    {1em \@plus .2ex}%
-    {\raggedright\hyphenpenalty=10000\normalfont\large\bfseries\MakeUppercase}}
-\makeatother
-
+\RequirePackage{titlesec}
+\RequirePackage{chngcntr}
+\counterwithout{section}{chapter}
+\titleformat{\section}[block]{\large\centering}{}{1em}{}
+\titleformat{\subsection}[block]{\hspace{2ex}}{}{1em}{}%2ex based on section

@@ -11,6 +11,7 @@
 
 \DeclareCaptionType{imageCaption}[Рисунок][Список зображень]
 \DeclareCaptionType{tableCaption}[Таблиця][Список таблиць]
+\DeclareCaptionType{equationCaption}[Формула][Список формул]
 
 \DeclareCaptionLabelSeparator{longDash}{ $ - $ }
 
@@ -18,8 +19,18 @@
 \usepackage{chngcntr}
 \counterwithin{imageCaption}{section}
 \counterwithin{tableCaption}{section}
+\counterwithin{equationCaption}{section}
 
 \captionsetup[imageCaption]{
+  %format=plain,
+  %justification=raggedright,
+  %]singlelinecheck=false,
+  %font=small,
+  %font={bf,sf},
+  labelsep=longDash
+}
+
+\captionsetup[equationCaption]{
   %format=plain,
   %justification=raggedright,
   %]singlelinecheck=false,

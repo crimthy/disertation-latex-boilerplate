@@ -25,11 +25,18 @@
 \RequirePackage{multirow}
 \RequirePackage{mwe}
 \RequirePackage{soulutf8}
-\setlist{leftmargin=15.5mm}
 
-\setlength{\RaggedRightParfillskip}{.25\textwidth plus 1fil}
-\setlength{\RaggedRightRightskip}{0pt plus .1\textwidth}
-\setlength{\RaggedRightParindent}{1em}
+% wtf don't remember this
+%\setlength{\RaggedRightParfillskip}{.25\textwidth plus 1fil}
+%\setlength{\RaggedRightRightskip}{0pt plus .1\textwidth}
+%\setlength{\RaggedRightParindent}{1em}
+
+% par indent approx 5 chars
+\newlength{\fivecharsapprox}
+\setlength{\fivecharsapprox}{6ex}
+\setlength{\parindent}{\fivecharsapprox}
+% line spacing 1.5
+\renewcommand{\baselinestretch}{1.5}
 
 % import utils libs
 \RequirePackage{lib/importers/default-importer}

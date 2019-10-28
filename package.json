@@ -8,7 +8,7 @@
     "build-pdflatex-pdf": "node scripts/build-pdf.js pdflatex",
     "build-xelatex-pdf": "node scripts/build-pdf.js xelatex",
     "clear": "node scripts/clear.js || true",
-    "git-clear-history": "",
+    "git-clear-history": "rm -rf .git",
     "git-commit": "node scripts/git-commit.js",
     "update-lib": "node scripts/update-lib.js"
   }
