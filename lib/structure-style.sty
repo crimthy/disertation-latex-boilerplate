@@ -7,10 +7,22 @@
 \RequirePackage{chngcntr}
 %\RequirePackage{titletoc}
 %\RequirePackage{tocloft}
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\addto\captionsukrainian{
+  \renewcommand{\contentsname}
+    {ЗМІСТ}
+}
 \counterwithout{section}{chapter}
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
-
 
 %\setlength{\cftsubsecindent}{1cm}
 %\setlength{\cftsubsubsecindent}{2cm}
