@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{lib/numbering-pages}[2019 LBoiler package]
+\ProvidesPackage{lib/numbering-pages}[2019 LMDB lib]
 
 \RequirePackage{silence}
 \WarningFilter*{memoir}{You are using the caption package with the memoir class}
@@ -26,7 +26,6 @@
     \makeatother
 }
 
-
 \fancypagestyle{default-numbered-inc}{
   \FPeval{\result}{clip(\thepage+1)}%
   \pagestyle{empty-style}
@@ -46,4 +45,3 @@
 \newcommand{\startPageCountFrom}[1]{
   \setcounter{page}{#1}
 }
-
