@@ -2,4 +2,16 @@
 \ProvidesPackage{lib/mathematics}[2019 LBoiler package]
 
 \RequirePackage{amsmath}
-\numberwithin{equation}{section}
+
+\newcounter{globalEquationCounter}
+\makeatletter
+\def\eqref#1{{\textup{\measuring@true\tagform@{\ref{#1}}}}}%
+\def\maketag@@@#1{\hbox{%
+\ifmeasuring@\else
+  \stepcounter{globalEquationCounter}%
+\fi
+\m@th\normalfont#1}}
+\makeatother
+
+% numbering by section
+%\numberwithin{equation}{section}
