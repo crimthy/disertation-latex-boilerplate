@@ -5,6 +5,53 @@
 \RequirePackage{extsizes}
 \RequirePackage{titlesec}
 \RequirePackage{chngcntr}
+%\RequirePackage{titletoc}
+%\RequirePackage{tocloft}
 \counterwithout{section}{chapter}
-\titleformat{\section}[block]{\large\centering}{}{1em}{}
-\titleformat{\subsection}[block]{\hspace{2ex}}{}{1em}{}%2ex based on section
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+
+%\setlength{\cftsubsecindent}{1cm}
+%\setlength{\cftsubsubsecindent}{2cm}
+%\cftsetindents{section}{1em}{1em}
+%\cftsetindents{subsection}{2em}{2em}
+%\cftsetindents{subsubsection}{3em}{3em}
+
+\titleformat{\section}[block]{\large\centering}{\thesection.\ }{0pt}{}
+\titleformat{\subsection}[block]{\hspace{4ex}}{\thesubsection.\ }{0pt}{}%4ex based on section
+\titleformat{\subsubsection}[block]{\hspace{4ex}}{\thesubsubsection.\ }{0pt}{}
+
+
+% TOC style for 'section'
+
+\makeatletter
+\renewcommand\tableofcontents{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \section*{\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    }
+  % indents {left_margin}{number_to_title}
+  \renewcommand{\l@section}{\@dottedtocline{1}{1.5em}{1em}}
+  \renewcommand{\l@subsection}{\@dottedtocline{2}{2.5em}{2em}}
+  \renewcommand{\l@subsubsection}{\@dottedtocline{3}{3.5em}{3em}}
+\makeatother
+
+
+\newcommand{\unnumberedSection}[1]{
+  \addcontentsline{toc}{section}{#1}
+  \section*{#1}
+}
+
+\newcommand{\startSection}[1]{
+  \newpage
+  \section{#1}
+}
+
