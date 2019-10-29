@@ -1,0 +1,12 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lib/table}[2019 LMDB lib]
+
+
+\newcounter{globalTableCounter}
+\setcounter{globalTableCounter}{0}
+\newcommand{\printCustomTable}[2]{
+    \begin{tableCaption}[H]
+        \caption{#2}
+    \end{tableCaption}
+    #1
+\stepcounter{globalTableCounter}}

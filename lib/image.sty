@@ -1,12 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{lib/image-manager}[2019 LMDB lib]
+\ProvidesPackage{lib/image}[2019 LMDB lib]
  
 \RequirePackage{graphicx}
 \RequirePackage{lib/caption}
 \graphicspath{ {./media/images/} }
 
 \newcounter{globalImageCounter}
-\setcounter{globalImageCounter}{1}
+\setcounter{globalImageCounter}{0}
 \newcommand{\printImage}[2]{
     \begin{center}
         \includegraphics[width=0.5\textwidth]{#1}
@@ -14,5 +14,4 @@
     \begin{imageCaption}[H]
         \caption{#2}
     \end{imageCaption}
-\stepcounter{globalImageCounter}
-}
+\stepcounter{globalImageCounter}}
