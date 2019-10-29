@@ -11,5 +11,9 @@
     "git-clear-history": "rm -rf .git",
     "git-commit": "node scripts/git-commit.js",
     "update-lib": "node scripts/update-lib.js"
+  },
+  "dependencies": {
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   }
 }
