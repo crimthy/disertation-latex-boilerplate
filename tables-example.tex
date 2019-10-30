@@ -4,4 +4,25 @@
 \pagestyle{no-numbered}
 \unnumberedSection{ПРИКЛАД ТАБЛИЦЬ}
 
+%\begin{tabular}{ |c@{} *{\value{cnt}}{c|} }
+%\hline
+%\maketabularrow{\value{cnt}}\\ \hline
+%\end{tabular}
+\initTable{TestTable}
+\addTableVariable{TestTable}{some data}
+\getTableVariable{TestTable}{0}
+
+\initTable{MyTable}
+\addTableVariable{MyTable}{some data}
+\addTableVariable{MyTable}{seconda}
+
+\getTableVariable{MyTable}{1}
+
+\getTableVariable{TestTable}{0}
+
+\getTableVariable{MyTable}{1}
+
+\initSet{TestSet}
+\addVariableToSet{TestSet}{DATA AAAA}
+\getVariableFromSet{TestSet}{0}
 \end{document}

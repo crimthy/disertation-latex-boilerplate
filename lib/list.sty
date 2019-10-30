@@ -1,2 +1,32 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{lib/list}[2019 LMDB lib]
+
+% left marg - [leftmargin=\dimexpr 26pt-.5in]
+% items spacing - \itemsep0em
+\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\newcommand{\listEnumerated}[1]{
+    \begin{enumerate}[noitemsep,topsep=0pt,leftmargin=6.5ex]
+        #1
+    \end{enumerate}
+}
+
+\newcommand{\listInnerEnumerated}[1]{
+    \begin{enumerate}[noitemsep,topsep=0pt]
+        #1
+    \end{enumerate}
+}
+
+\renewcommand{\labelitemi}{---}
+\renewcommand\labelitemii{\textbullet}
+\newcommand{\listDefault}[1]{
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=7ex]
+        #1
+    \end{itemize}
+}
+
+\newcommand{\listInnerDefault}[1]{
+    \begin{itemize}[noitemsep,topsep=0pt]
+        #1
+    \end{itemize}
+}

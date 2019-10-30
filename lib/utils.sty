@@ -8,3 +8,18 @@
     #1
     \fi
 }
+
+\newcommand{\initSet}[1]{
+    \newcounter{#1}
+}
+
+\newcommand\textlist{}
+\newcounter{accumulator}
+\newcommand\addVariableToSet[2]{%
+    \setcounter{accumulator}{\value{#1}}
+    \stepcounter{#1}%
+    \csdef{#1\theaccumulator}{#2}
+}
+
+\newcommand\getVariableFromSet[2]{%
+    \csuse{#1#2}}

@@ -1,7 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{lib/table}[2019 LMDB lib]
 
-
 \newcounter{globalTableCounter}
 \setcounter{globalTableCounter}{0}
 \newcommand{\printCustomTable}[2]{
@@ -10,3 +9,16 @@
     \end{tableCaption}
     #1
 \stepcounter{globalTableCounter}}
+
+% 1 name, 2 value
+\newcommand{\initTable}[1]{
+    \initSet{#1}
+}
+
+\newcommand\addTableVariable[2]{%
+    \addVariableToSet{#1}{#2}
+}
+
+\newcommand\getTableVariable[2]{%
+    \getVariableFromSet{#1}{#2}
+}

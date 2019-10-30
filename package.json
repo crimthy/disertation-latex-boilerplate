@@ -10,7 +10,9 @@
     "clear": "node scripts/clear.js || true",
     "git-clear-history": "rm -rf .git",
     "git-commit": "node scripts/git-commit.js",
-    "update-lib": "node scripts/update-lib.js"
+    "update-lib": "node scripts/update-lib.js",
+    "prepare-examples": "node scripts/prepare-examples.js",
+    "clear-examples": "node scripts/clear-examples.js"
   },
   "dependencies": {
     "request": "^2.88.0",

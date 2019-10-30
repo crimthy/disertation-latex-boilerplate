@@ -19,6 +19,7 @@ const hashFile = targetFile  => {
             })
     })
 }
+
 const libIndex = (dirPath, result) => {
     result = result || []
     const targetPath = path.join(root,dirPath)
@@ -69,6 +70,7 @@ const indexFiles = (targetPath) => {
                     }
                 }
                 catch(err) {
+                    console.log(`New file ${element['path']}, saving...`)
                     const file = fs.createWriteStream(filePath)
                     https.get(element['download_url'], function(response) {
                         response.pipe(file)

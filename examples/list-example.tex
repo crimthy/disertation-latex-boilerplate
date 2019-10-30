@@ -1,0 +1,49 @@
+\documentclass{lib/styles/default-style}
+
+\begin{document}
+\pagestyle{no-numbered}
+\unnumberedSection{ПРИКЛАД ТАБЛИЦЬ}
+
+\subsection*{\textbf{Нумерований список}}
+
+В даному розділі розглянемо створення нумерованого списку \verb+\listEnumerated+,
+а також вкладених у нумеровані списки.
+
+Наприклад:
+\listEnumerated {
+    \item Перший;
+    \item Другий;
+    \item Третій;
+    \item Четвертий;
+}
+
+Тепер вкладений список \verb+\listInnerEnumerated+:
+\listEnumerated {
+    \item Перший;
+    \item Другий;
+    \listInnerEnumerated {
+        \item Перший;
+        \item Другий;
+    }
+}
+
+\subsection*{\textbf{Звичайний список}}
+
+В даному розділі розглянемо створення списку \verb+\listDefault+:
+\listDefault{
+    \item ПРИКЛАД;
+    \item Різних;
+    \item Пунктів;
+}
+
+Вкладений список \verb+\listInnerDefault+:
+\listDefault{
+    \item ПРИКЛАД;
+    \listInnerDefault{
+        \item ПРИКЛАД;
+        \item Різних;
+    }
+    \item Далі;
+}
+
+\end{document}
