@@ -1,6 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{lib/table}[2019 LMDB lib]
 
+\RequirePackage{expl3}
+\RequirePackage{booktabs}
+
 \newcounter{globalTableCounter}
 \setcounter{globalTableCounter}{0}
 \newcommand{\printTableWithCaption}[2]{
@@ -23,40 +26,48 @@
     \getVariableFromSet{#1}{#2}
 }
 
+% bug with whilebool create extra cell
 % inc => \the\numexpr\value{#1}+1\relax
 \newcommand\flushTableValues[2]{%
     \setcounter{accumulator}{0}%
     \whileboolexpr{
         test{\ifnumcomp{\value{accumulator}}{<}{#1}}
     }{%
-        \getTableVariable{#2}{\theaccumulator}\stepcounter{accumulator}%
-    }%
-}
-
-
-\newcounter{styleTableCounter}
-\newcommand\tableStyleFormat[2]{%
-    \setcounter{styleTableCounter}{#2}
-    \setcounter{accumulator}{0}%
-    \whileboolexpr{
-        test{\ifnumcomp{\value{accumulator}}{<=}{\value{styleTableCounter}}}
-    }{%
-        \stepcounter{accumulator}%
-        #1
+        \getTableVariable{#2}{\theaccumulator} \stepcounter{accumulator}%
     }%
 }
 
 \newcommand\printSimpleTable[2]{
-    \centering
-    \begin{tabular}{#2}
-        \hline
-        \flushTableValues{\value{#1}}{#1}
-    \end{tabular}
+    \begin{center}
+        \begin{tabular}{#2}
+            \hline
+            \flushTableValues{\value{#1}}{#1}
+        \end{tabular}    
+    \end{center}
+    
 }
 
-\newcommand\printCustomTable[2]{
-    \begin{tabular}{#1}
-        #2
+% main tables
+\ExplSyntaxOn
+\clist_new:N \l_table_clist
+\newcommand\createTable[2][4]{
+  \clist_set:Nn \l_table_clist {#2}
+  \begin{center}
+    \begin{tabular}{*{#1}{|c}|}\hline
+        \clist_use:Nn \l_table_clist {\\\hline}
+        \\\hline
     \end{tabular}%
+  \end{center} 
 }
 
+\newcommand\createStyledTable[3][4]{
+  \clist_set:Nn \l_table_clist {#2}
+  \begin{center}
+    \begin{tabular}{#3}\hline
+        \clist_use:Nn \l_table_clist {\\\hline}
+        \\\hline
+    \end{tabular}%
+  \end{center}
+  
+}
+\ExplSyntaxOff

@@ -5,11 +5,39 @@
 \unnumberedSection{TABLES}
 
 \initTable{MyTable}
+% use as transparent?
+\addTableVariable{MyTable}{some realy important data & some realy important data & one \\}
+\addTableVariable{MyTable}{some realy important data & data & one \\}
+\addTableVariable{MyTable}{some realy important data & end & one \\}
+\addTableVariable{MyTable}{some realy important data & end & one \\ \hline}
+\printSimpleTable{MyTable}{|cc|c|}
+Another table:
+\vspace{1em}
 
-\addTableVariable{MyTable}{some & data & one\\ \hline}
-\addTableVariable{MyTable}{anothe & data & one \\ \hline}
-\addTableVariable{MyTable}{test & end & one\\ \hline}
-\addTableVariable{MyTable}{test & end & one\\ \hline}
-\printSimpleTable{MyTable}{|l|l|l|}
+\createStyledTable{
+    {Just test&\multicolumn{3}{c|}{Test}},
+    {Twi&\multicolumn{3}{c|}{Value}},
+    {Three& 1&2&3},
+    {Four&1&\multicolumn{2}{c|}{Small}},
+    {Four&1&2&2},
+    {Next&1&2&2}
+}{|l|ccc|}
+
+\subsection*{With caption}
+
+\printTableWithCaption{
+    \createTable{
+    {One&1&2&3},
+    {Twi&4&6&8},
+    {Three& 1&2&3},
+    {Four&1&2&2},
+    {Four&1&2&2},
+    {Next&1&2&2}
+}
+}{
+    Some good caption
+}
+
+
 
 \end{document}

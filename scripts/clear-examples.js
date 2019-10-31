@@ -11,7 +11,7 @@ const indexFiles = (dirPath, result) => {
     fs.readdirSync(targetPath).forEach(file => {
         const targetFile = path.join(targetPath,file)
         if (fs.lstatSync(targetFile).isDirectory())
-            libIndex(path.join(dirPath, file), result)
+            indexFiles(path.join(dirPath, file), result)
         else
             result.push(path.join(dirPath, file))
     })
