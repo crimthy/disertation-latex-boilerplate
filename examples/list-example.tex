@@ -2,48 +2,47 @@
 
 \begin{document}
 \pagestyle{no-numbered}
-\unnumberedSection{ПРИКЛАД ТАБЛИЦЬ}
+\unnumberedSection{List}
+\subsection*{\textbf{Description}}
+Boilerplate define only 2 custom levels for lists
 
-\subsection*{\textbf{Нумерований список}}
+\subsection*{\textbf{Enumerated List}}
 
-В даному розділі розглянемо створення нумерованого списку \verb+\listEnumerated+,
-а також вкладених у нумеровані списки.
+Boilerplate provide enumerated list with \verb+\listEnumerated+ command 
 
-Наприклад:
+Example:
 \listEnumerated {
-    \item Перший;
-    \item Другий;
-    \item Третій;
-    \item Четвертий;
+    \item First;
+    \item Second;
 }
 
-Тепер вкладений список \verb+\listInnerEnumerated+:
+For inner list usage, use command \verb+\listInnerEnumerated+:
 \listEnumerated {
-    \item Перший;
-    \item Другий;
+    \item First;
+    \item Second;
     \listInnerEnumerated {
-        \item Перший;
-        \item Другий;
+        \item FirstInner;
+        \item SecondInner;
     }
 }
 
-\subsection*{\textbf{Звичайний список}}
+\subsection*{\textbf{Item List}}
 
-В даному розділі розглянемо створення списку \verb+\listDefault+:
+Boilerplate provide non-numbered item list with \verb+\listDefault+ command
+
+Example:
 \listDefault{
-    \item ПРИКЛАД;
-    \item Різних;
-    \item Пунктів;
+    \item First;
+    \item Second;
 }
 
-Вкладений список \verb+\listInnerDefault+:
+For inner list usage, use command \verb+\listInnerDefault+:
 \listDefault{
-    \item ПРИКЛАД;
+    \item First;
     \listInnerDefault{
-        \item ПРИКЛАД;
-        \item Різних;
+        \item Inner;
     }
-    \item Далі;
+    \item Second;
 }
 
 \end{document}

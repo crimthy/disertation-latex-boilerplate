@@ -1,0 +1,26 @@
+\documentclass{lib/styles/default-style}
+
+\begin{document}
+\pagestyle{no-numbered}
+
+\unnumberedSection{\textbf{SET}}
+\subsection*{\textbf{Description}}
+Set uses to to simplify code writing, when build tables and lists
+
+At first, init named set, with: \verb+\initSet{setName}+ command
+
+Lets create 'TestSet' set, and write some data
+\initSet{TestSet}
+
+\subsection*{\textbf{Write}}
+Write operation: \verb+\addVariableToSet{setName}{data}+
+
+Lets push value 'First index data'
+\addVariableToSet{TestSet}{First index data}
+
+\subsection*{\textbf{Read}}
+Now you can access data, using \verb+\getVariableFromSet{setName}{index}+ command
+
+So, value in TestSet[0] = \getVariableFromSet{TestSet}{0}
+
+\end{document}
