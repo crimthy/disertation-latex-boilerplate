@@ -2,27 +2,14 @@
 
 \begin{document}
 \pagestyle{no-numbered}
-\unnumberedSection{ПРИКЛАД ТАБЛИЦЬ}
-
-%\begin{tabular}{ |c@{} *{\value{cnt}}{c|} }
-%\hline
-%\maketabularrow{\value{cnt}}\\ \hline
-%\end{tabular}
-\initTable{TestTable}
-\addTableVariable{TestTable}{some data}
-\getTableVariable{TestTable}{0}
+\unnumberedSection{TABLES}
 
 \initTable{MyTable}
-\addTableVariable{MyTable}{some data}
-\addTableVariable{MyTable}{seconda}
 
-\getTableVariable{MyTable}{1}
+\addTableVariable{MyTable}{some & data & one\\ \hline}
+\addTableVariable{MyTable}{anothe & data & one \\ \hline}
+\addTableVariable{MyTable}{test & end & one\\ \hline}
+\addTableVariable{MyTable}{test & end & one\\ \hline}
+\printSimpleTable{MyTable}{|l|l|l|}
 
-\getTableVariable{TestTable}{0}
-
-\getTableVariable{MyTable}{1}
-
-\initSet{TestSet}
-\addVariableToSet{TestSet}{DATA AAAA}
-\getVariableFromSet{TestSet}{0}
 \end{document}
