@@ -45,6 +45,7 @@ const indexFiles = (targetPath) => {
 
     request(options)
         .then(function (response) {
+            const clear = (p) => fs.unlink(p)
             const responseObject = JSON.parse(response)
 
             const files  = responseObject.filter(element => element['type'] === 'file')
@@ -60,10 +61,13 @@ const indexFiles = (targetPath) => {
                                 hashFile(tempPath).then(function(downloadedFileHash) {
                                     if (localFileHash !== downloadedFileHash) {
                                         console.log(`File: ${element['path']} has new version, replacing...`)
-                                        response.pipe(filePath)
-                                        //fs.writeFileSync(filePath,response)
+                                        file.on('finish', function() {
+                                            const updatedFile = fs.createWriteStream(filePath)
+                                            fs.createReadStream(tempPath).pipe(updatedFile)
+                                            updatedFile.on('finish', function(){clear(tempPath)})
+                                        })
                                     }
-                                    fs.unlinkSync(tempPath)
+                                    else clear(tempPath)
                                 })
                             }) 
                         })
