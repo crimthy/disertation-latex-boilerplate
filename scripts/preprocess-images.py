@@ -1,13 +1,19 @@
 from PIL import Image
 import PIL.ImageOps
-from os import path
+from os import path, listdir
 import os
+from pathlib import Path
+from os.path import isfile, join
 
 original_dir = 'original'
 inverted_dir = 'inverted'
 rotated_dir = 'rotated'
 
-target_dirs = [original_dir, inverted_dir, rotated_dir]
+curr_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = Path(curr_dir).parent
+images_dir = path.join(parent_dir, 'media','images')
+target_dirs = [ path.join(images_dir,target_dir_name) for target_dir_name in [original_dir, inverted_dir, rotated_dir] ] 
+
 for target_dir in target_dirs:
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
@@ -55,5 +61,4 @@ def invert_colors(image_path):
         inverted_image.save(path.join(inverted_dir,image_path))
 
 if __name__ == '__main__':
-    img = 'site-img.jpg'
-    rotate_image(img)
+    images = [f for f in listdir(images_dir) if isfile(join(images_dir, f))]
