@@ -8,11 +8,14 @@ from os.path import isfile, join
 original_dir = 'original'
 inverted_dir = 'inverted'
 rotated_dir = 'rotated'
+resized_dir = 'resized'
+mirrored_dir = 'mirrored'
+grayscaled_dir = 'gray-scaled'
 
 curr_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = Path(curr_dir).parent
 images_dir = path.join(parent_dir, 'media','images')
-target_dirs = [ path.join(images_dir,target_dir_name) for target_dir_name in [original_dir, inverted_dir, rotated_dir] ] 
+target_dirs = [ path.join(images_dir,target_dir_name) for target_dir_name in [original_dir, inverted_dir, rotated_dir, resized_dir, mirrored_dir, grayscaled_dir] ] 
 
 for target_dir in target_dirs:
     if not os.path.exists(target_dir):
@@ -24,7 +27,27 @@ def watermark_with_transparency(input_image_path, output_image_path):
     transparent = Image.new('RGB', (width - 20, height - 20), (0,0,0,0))
     transparent.paste(base_image, (0,0))
     transparent.save(output_image_path)
- 
+
+def resize_image(image_name, image_path):
+    image = Image.open(image_path)
+    target = path.join(images_dir, resized_dir, image_name)
+    width, height = image.size 
+    image = image.resize((width/2, height/2)) 
+    image.save(target)
+
+def mirror_image(image_name, image_path):
+    image = Image.open(image_path)
+    target = path.join(images_dir, mirrored_dir, image_name)
+    transposed_image = image.transpose(Image.FLIP_LEFT_RIGHT) 
+    transposed_image.save(target)
+
+def gray_scale_image(image_name, image_path):
+    image = Image.open(image_path)
+    target = path.join(images_dir, grayscaled_dir, image_name)
+    greyscale_image = image.convert('L')
+    greyscale_image.save(target)
+
+
 def clear_exif_data(image_path):
     image = Image.open(image_path)
     data = list(image.getdata())
@@ -49,6 +72,9 @@ def modify_image(image_name):
     clear_exif_data(image_path)
     invert_colors(image_name, image_path)
     rotate_image(image_name, image_path)
+    resize_image(image_name, image_path)
+    mirror_image(image_name, image_path)
+    gray_scale_image(image_name, image_path)
 
 def invert_colors(image_name, image_path):
     target = path.join(images_dir, inverted_dir, image_name)
