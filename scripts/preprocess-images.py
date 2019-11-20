@@ -32,7 +32,7 @@ def resize_image(image_name, image_path):
     image = Image.open(image_path)
     target = path.join(images_dir, resized_dir, image_name)
     width, height = image.size 
-    image = image.resize((width/2, height/2)) 
+    image = image.resize((int(width/2), int(height/2))) 
     image.save(target)
 
 def mirror_image(image_name, image_path):
