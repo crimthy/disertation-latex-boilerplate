@@ -32,21 +32,26 @@ def clear_exif_data(image_path):
     image_without_exif.putdata(data)
     image_without_exif.save(image_path)
 
-def backup_image(image_path): 
-    target = path.join(original_dir,image_path)
+def backup_image(image_name, image_path): 
+    target = path.join(images_dir, original_dir, image_name)
     image = Image.open(image_path)
     image.save(target)
 
-def rotate_image(image_path):
+def rotate_image(image_name, image_path):
+    target = path.join(images_dir, rotated_dir, image_name)
     image = Image.open(image_path)
     image_rotated = image.rotate(90, expand=True)
-    image_rotated.save(path.join(rotated_dir,image_path))
+    image_rotated.save(target)
 
-def modify_image(image_path):
-    backup_image(image_path)
+def modify_image(image_name):
+    image_path = path.join(images_dir, image)
+    backup_image(image_name, image_path)
     clear_exif_data(image_path)
+    invert_colors(image_name, image_path)
+    rotate_image(image_name, image_path)
 
-def invert_colors(image_path):
+def invert_colors(image_name, image_path):
+    target = path.join(images_dir, inverted_dir, image_name)
     image = Image.open(image_path)
     if image.mode == 'RGBA':
         r,g,b,a = image.split()
@@ -54,11 +59,13 @@ def invert_colors(image_path):
         inverted_image = PIL.ImageOps.invert(rgb_image)
         r2,g2,b2 = inverted_image.split()
         final_transparent_image = Image.merge('RGBA', (r2,g2,b2,a))
-        final_transparent_image.save(path.join(inverted_dir,image_path))
+        final_transparent_image.save(target)
     else:
 
         inverted_image = PIL.ImageOps.invert(image)
-        inverted_image.save(path.join(inverted_dir,image_path))
+        inverted_image.save(target)
 
 if __name__ == '__main__':
     images = [f for f in listdir(images_dir) if isfile(join(images_dir, f))]
+    for image in images:
+        modify_image(image)
