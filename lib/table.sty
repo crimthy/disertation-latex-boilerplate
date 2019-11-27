@@ -6,12 +6,6 @@
 
 \newcounter{globalTableCounter}
 \setcounter{globalTableCounter}{0}
-\newcommand{\printTableWithCaption}[2]{
-    \begin{tableCaption}[H]
-        \caption{#2}
-    \end{tableCaption}
-    #1
-\stepcounter{globalTableCounter}}
 
 % 1 name, 2 value
 \newcommand{\initTable}[1]{
@@ -48,6 +42,14 @@
 }
 
 % main tables
+
+\newcommand{\printTableWithCaption}[2]{
+    \begin{tableCaption}[H]
+        \caption{#2}
+    \end{tableCaption}
+    #1
+\stepcounter{globalTableCounter}}
+
 \ExplSyntaxOn
 \clist_new:N \l_table_clist
 \newcommand\createTable[2][4]{
