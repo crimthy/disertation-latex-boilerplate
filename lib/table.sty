@@ -48,7 +48,8 @@
         \caption{#2}
     \end{tableCaption}
     #1
-\stepcounter{globalTableCounter}}
+\stepcounter{globalTableCounter}
+\label{table:#2}}
 
 \ExplSyntaxOn
 \clist_new:N \l_table_clist

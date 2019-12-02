@@ -6,3 +6,6 @@ build/*
 !.vscode/extensions.json
 node_modules/
 lib/macro/user-info.sty
+media/code/*
+media/images/*
+dissertation.tex

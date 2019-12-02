@@ -2,16 +2,32 @@
 \ProvidesPackage{lib/image}[2019 LMDB lib]
  
 \RequirePackage{graphicx}
+\RequirePackage{xparse}
 \RequirePackage{lib/caption}
+
 \graphicspath{ {./media/images/} }
 
 \newcounter{globalImageCounter}
 \setcounter{globalImageCounter}{0}
-\newcommand{\printImage}[2]{
+
+\NewDocumentCommand{\printImage}{ O{1} O{0.5} m m}{
     \begin{center}
-        \includegraphics[width=0.5\textwidth]{#1}
+        \includegraphics[width=#1\textwidth, height=#2\textwidth]{#3}
     \end{center}
     \begin{imageCaption}[H]
-        \caption{#2}
+        \caption{#4}
     \end{imageCaption}
-\stepcounter{globalImageCounter}}
+\stepcounter{globalImageCounter}
+\label{img:#3}
+}
+
+\NewDocumentCommand{\printSubImage}{ O{1} O{0.5} m m}{
+    \begin{center}
+        \includegraphics[width=#1\textwidth, height=#2\textwidth]{#3}
+    \end{center}
+    \begin{subImageCaption}[H]
+        \caption{#4}
+    \end{subImageCaption}
+\stepcounter{globalImageCounter}
+\label{img:#3}
+}

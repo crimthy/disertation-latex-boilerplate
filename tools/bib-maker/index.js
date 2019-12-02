@@ -41,7 +41,7 @@ const saveToFile = (str, fileName) => {
 }
 
 const buildPlaneText = (arr, name) => {
-    const toSaveStr = arr.map(value => value.toPrintableString()).join('\n');
+    const toSaveStr = arr.map(value => value != undefined ? value.toPrintableString() : "").join('\n');
     saveToFile(toSaveStr, name);
 }
 

@@ -10,15 +10,23 @@
 \RequirePackage{float}
 
 \DeclareCaptionType{imageCaption}[Рисунок][Список зображень]
+\DeclareCaptionType{subImageCaption}[Рисунок][Список зображень]
 \DeclareCaptionType{tableCaption}[Таблиця][Список таблиць]
+\DeclareCaptionType{codeCaption}[Лістинг][Список лістингів]
 
 \DeclareCaptionLabelSeparator{longDash}{ $ - $ }
 
 % subsection numbering
 \usepackage{chngcntr}
 \counterwithin{imageCaption}{section}
+\counterwithin{subImageCaption}{subsection}
 \counterwithin{tableCaption}{section}
+\counterwithin{codeCaption}{section}
 \counterwithin{equation}{section}
+
+\captionsetup[codeCaption]{
+  labelsep=longDash
+}
 
 \captionsetup[imageCaption]{
   %format=plain,
@@ -28,6 +36,16 @@
   %font={bf,sf},
   labelsep=longDash
 }
+
+\captionsetup[subImageCaption]{
+  %format=plain,
+  %justification=raggedright,
+  %]singlelinecheck=false,
+  %font=small,
+  %font={bf,sf},
+  labelsep=longDash
+}
+
 \captionsetup[tableCaption]{
   %format=plain,
   %justification=raggedright,
