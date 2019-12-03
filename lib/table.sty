@@ -3,6 +3,9 @@
 
 \RequirePackage{expl3}
 \RequirePackage{booktabs}
+\RequirePackage{adjustbox}
+\RequirePackage{longtable}
+\RequirePackage{tabu}
 
 \newcounter{globalTableCounter}
 \setcounter{globalTableCounter}{0}
@@ -31,7 +34,7 @@
     }%
 }
 
-\newcommand\printSimpleTable[2]{
+\newcommand\printSimpleTable[3]{
     \begin{center}
         \begin{tabular}{#2}
             \hline
@@ -42,14 +45,44 @@
 }
 
 % main tables
+% new table template
+\newcommand{\makeLongTable}[3]{
+    \begin{center}
+            \begin{longtabu} to \textwidth {#3}
+                \hline
+                #1 \\
+                \hline
+                \endhead
+                #2
+            \hline
+            \end{longtabu}
+    \end{center}
+    
+}
 
-\newcommand{\printTableWithCaption}[2]{
+\newcommand{\makeTable}[3]{
+        \begin{table}[ht]
+        \centering
+        \begin{adjustbox}{width=0.8\textwidth}
+            \Large
+            \begin{tabular}{#3}
+            \hline
+            #1 \\
+            \hline
+            #2
+            \hline
+        \end{tabular}
+        \end{adjustbox}
+    \end{table}
+}
+
+\newcommand{\printTableWithCaption}[3]{
     \begin{tableCaption}[H]
         \caption{#2}
+        \label{tbl:#3}
     \end{tableCaption}
     #1
-\stepcounter{globalTableCounter}
-\label{table:#2}}
+\stepcounter{globalTableCounter}}
 
 \ExplSyntaxOn
 \clist_new:N \l_table_clist
@@ -65,11 +98,14 @@
 
 \newcommand\createStyledTable[3][4]{
   \clist_set:Nn \l_table_clist {#2}
+  \resizebox{\textwidth}{!}
   \begin{center}
+    \begin{adjustbox}{width=1\textwidth}
     \begin{tabular}{#3}\hline
         \clist_use:Nn \l_table_clist {\\\hline}
         \\\hline
     \end{tabular}%
+    \end{adjustbox}
   \end{center}
   
 }

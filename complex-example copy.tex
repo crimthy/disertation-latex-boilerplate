@@ -33,29 +33,6 @@ SADT,IDEFO, одночасно збагативши їх новими ідеям
 
 Привіт світе
 
-\printImage{cat}{Малюнок котика}
-\newpage
-\startSection{ІНШИЙ ВСТУП}
-\subsection{Інша сабсекція}
-\subsubsection{Subsubsection B}
-Створення  інформаційних  систем  сьогодні  здійснюється  
-на  основі сучасних  методологічних  концепцій,
-які  успадкували  найважливіші  ідеї класичних методологій типу
-SADT,IDEFO, одночасно збагативши їх новими ідеями.
-\printTableWithCaption{
-    \createTable{
-    {One&1&2&3},
-    {Twi&4&6&8},
-    {Three& 1&2&3},
-    {Four&1&2&2},
-    {Four&1&2&2},
-    {Next&1&2&2}
-}
-}{
-    Some good caption
-}
-
-
 \subsubsection{Subsubsection B}
 Найперспективнішим напрямом розвитку програмних
 продуктів є клієнт серверна взаємодія в більшості
@@ -88,20 +65,7 @@ SADT,IDEFO, одночасно збагативши їх новими ідеям
  
 Зараз подивимось шо це~\eqref{eq:solv}.
 
-\printTableWithCaption{
-    \createTable{
-    {One&1&2&3},
-    {Twi&4&6&8},
-    {Three& 1&2&3},
-    {Four&1&2&2},
-    {Four&1&2&2},
-    {Next&1&2&2}
-}
-}{
-    Some good caption
-}
-
-\begin{code}{Test}
+\begin{stdout}{Test}
     <html>
      <head>
       <title>PHP Test</title>
@@ -115,6 +79,38 @@ SADT,IDEFO, одночасно збагативши їх новими ідеям
      <?php echo '<p>Hello World</p>'; ?> 
      </body>
     </html>
+\end{stdout}
+
+\begin{code}{Test}
+<html>
+<head>
+ <title>PHP Test</title>
+</head>
+<body>
+<?php echo '<p>Hello World</p>'; ?> 
+</body>
+<title>PHP Test</title>
+</head>
+<body>
+<?php echo '<p>Hello World</p>'; ?> 
+</body>
+</html>
 \end{code}
+
+\begin{stdout}{Test}
+    <html>
+     <head>
+      <title>PHP Test</title>
+     </head>
+     <body>
+     <?php echo '<p>Hello World</p>'; ?> 
+     </body>
+     <title>PHP Test</title>
+     </head>
+     <body>
+     <?php echo '<p>Hello World</p>'; ?> 
+     </body>
+    </html>
+\end{stdout}
 
 \end{document}

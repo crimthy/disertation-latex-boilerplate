@@ -35,17 +35,44 @@
     tabsize=2
 }
 
-\lstset{style=mainCodeStyle}
+\lstdefinestyle{stdOutStyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true          
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
 
 \newcommand{\printCodeListing}[2]{
     \lstinputlisting[numbers=left, caption={#2}]{#1}
 }
 
-\lstnewenvironment{code}[2][]
-  {\lstset{#1}}% Add/update settings locally
+\lstnewenvironment{code}[3][]
+  {\lstset{style=mainCodeStyle}\lstset{#1}}% Add/update settings locally
   {\begin{codeCaption}[H]
     \caption{#2}
+    \label{code:#3}
 \end{codeCaption}
 \stepcounter{globalCodeCounter}
-\label{code:#2}}
+}
 
+\lstnewenvironment{stdout}[3][]
+  {\lstset{style=stdOutStyle}\lstset{#1}}% Add/update settings locally
+  {\begin{codeCaption}[H]
+    \caption{#2}
+    \label{code:#3}
+\end{codeCaption}
+\stepcounter{globalCodeCounter}}
+
+\lstnewenvironment{snippet}[1][]
+  {\lstset{style=stdOutStyle}\lstset{#1}}
+  {}
