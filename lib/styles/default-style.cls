@@ -18,7 +18,7 @@
 \RequirePackage{setspace,amsmath}
 \RequirePackage{kantlipsum}
 \RequirePackage[normalem]{ulem}
-\RequirePackage[left=20mm, top=15mm, right=15mm, bottom=15mm, nohead, footskip=10mm]{geometry}
+\RequirePackage[left=20mm, top=15mm, right=15mm, bottom=20mm, nohead]{geometry}
 \RequirePackage{enumitem}
 \RequirePackage{ragged2e}
 \RequirePackage{calc}

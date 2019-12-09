@@ -1,0 +1,31 @@
+\documentclass[a4paper]{report}
+\usepackage{graphicx}
+\usepackage[14pt]{extsizes}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+% use tempora font
+\usepackage{tempora}
+\usepackage{indentfirst}
+\usepackage{setspace,amsmath}
+\usepackage{kantlipsum}
+\usepackage[normalem]{ulem}
+\usepackage[left=20mm, top=15mm, right=15mm, bottom=15mm, nohead, footskip=10mm]{geometry}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{mwe}
+\usepackage{soulutf8}
+\graphicspath{ {./media/images/diagrams/} }
+\begin{document}
+\pagenumbering{gobble}
+\section*{Діаграма синтаксису VM}
+\includegraphics[angle=90,width=1\textwidth, height=1.45\textwidth]{vm_syntax}
+\newpage
+\section*{Структура менеджера керування пам'яттю  платформи}
+\includegraphics[angle=90,width=1\textwidth, height=1.45\textwidth]{mem_manager}
+\newpage
+\section*{Алгоритм роботи патерна Reactor}
+\includegraphics[width=1\textwidth, height=1.5\textwidth]{reactor_algo}
+\end{document}

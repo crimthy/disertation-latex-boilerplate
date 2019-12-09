@@ -1,0 +1,73 @@
+\documentclass{lib/styles/default-style}
+
+\begin{document}
+\pagestyle{no-numbered}
+\section{TABLES}
+
+\createLongTable{
+            Ім'я операції & Opcode & Сігнатура операція
+        }{
+            LShift      &   <<  & Push(Num(a << b)) \\
+            RShift      &   >> & Push(Num(a >> b))\\
+            Plus        &   +  &  Push(Num(a + b)) \\
+            Minus       &   -  & Push(Num(b - a)) \\
+            Multiply    &   *  &  Push(Num(a * b)) \\
+            Divide      &   /  & Push(Num(b / a)) \\
+            ToInt       & cast\_int & Push(Num(a.parse::)) \\
+            ToStr       & cast\_str & Push(String(format!(a)))\\
+            Println     & println&Println(a)\\
+            Equals&==&Push(Bool(a == b))\\
+            Or&or&Push(Bool(a || b))\\
+            BitOr&|&Push(Num(a | b))\\
+            And&and &Push(Bool(a \&\& b))\\
+            Not&not&Push(Bool(!a))\\
+            Xor&xor&Push(Num(a \^{} b))\\
+            LessThan&<&Push(Bool(b < a))\\
+            LessThanOrEqualTo&<=& Push(Bool(b <= a))\\
+            GreaterThan&>&Push(Bool(b > a))\\
+            GreaterThanOrEqualto&>=&Push(Bool(b >= a))\\
+            Mod&\%&Push(Num(b \% a))\\
+            If&if&Push(if cond { t } else { f })\\
+            Jump&jmp&Jump(a as usize)\\
+            Duplicate&dup&PushTwo(val.clone(), val)\\
+            Drop&drop&NA\\
+            Rotate&rot&PushThree(b, a, c)\\
+            LongRot&lrot&PushThree(b, c, a)\\
+            ShortRot&srot&PushThree(a, c, b)\\
+            Fup&fup&PushFour(d,b,c,a)\\
+            Swap&swap&PushTwo(a, b)\\
+            SleepMS&sleep\_ms&Sleep(a as u64)\\
+            Exit&exit&Stop(exit\_code as i32)\\
+            Hex&hex&Push(String(format!(a)))\\
+            Stop&stop&Stop(0)\\
+            Read&read&ReadLn\\
+            Over&over&PushThree(b.clone(), a, b)\\
+            Call&call&Call(a as usize)\\
+            Return&return&Return\\
+        }{|p{5cm}|p{5cm}|p{6cm}|}
+        {Таблиця підримуємих операцій}
+        {vm-operations}
+
+\end{document}
+
+\createLongTable
+    {
+        \multirow{2}{*}{\parbox{1.8cm}{Техніко-економічні характеристики ідеї}} &
+        \multicolumn{3}{c}{(Потенційні)товари/концепціїї конкурентів} &
+        \multirow{2}{*}{Слабка сторона} &
+        \multirow{2}{*}{Нейтральна сторона} &
+        \multirow{2}{*}{Сильна сторона} \\
+        \cline{2-4}
+        &
+        Даний проект &
+        Ethereum &
+        Hyperledger &
+        &
+        & 
+    }
+    {
+        1 & 2 & 3 & 4 & 5 & 6 & 7\\  
+    }
+    {|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    {Визначення сильних, слабких та нейтральних характеристик ідеї проекту}
+    {startup-compare-projects}

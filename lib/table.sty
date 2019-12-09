@@ -60,6 +60,30 @@
     
 }
 
+\newcommand{\printTableWithCaption}[3]{
+    \begin{tableCaption}[H]
+        \caption{#2}
+        \label{tbl:#3}
+    \end{tableCaption}
+    #1
+\stepcounter{globalTableCounter}}
+
+\newcommand{\createLongTable}[5]{
+            \begin{longtabu} to \textwidth [c]{#3}
+                \caption {#4}\label{tab:#5}\\\hline
+                \endfirsthead
+                \caption* {Продовження таблиці \ref{tab:#5}}\\\hline
+                \endhead
+                \hline
+                \endfoot
+                #1 \\
+                \hline
+                #2
+                \hline
+            \end{longtabu}
+            \stepcounter{globalTableCounter}
+}
+
 \newcommand{\makeTable}[3]{
         \begin{table}[ht]
         \centering
@@ -75,14 +99,6 @@
         \end{adjustbox}
     \end{table}
 }
-
-\newcommand{\printTableWithCaption}[3]{
-    \begin{tableCaption}[H]
-        \caption{#2}
-        \label{tbl:#3}
-    \end{tableCaption}
-    #1
-\stepcounter{globalTableCounter}}
 
 \ExplSyntaxOn
 \clist_new:N \l_table_clist

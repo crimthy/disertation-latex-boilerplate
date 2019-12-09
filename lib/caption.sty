@@ -23,6 +23,7 @@
 \counterwithin{tableCaption}{section}
 \counterwithin{codeCaption}{section}
 \counterwithin{equation}{section}
+\numberwithin{table}{section}
 
 \captionsetup[codeCaption]{
   labelsep=longDash
@@ -57,4 +58,13 @@
   singlelinecheck=false,
   skip=-1ex,
   margin=\fivecharsapprox
+}
+
+\captionsetup[longtable]{
+  labelsep=longDash,
+  justification=raggedright,
+  singlelinecheck=false,
+  skip=3ex,
+  margin=\fivecharsapprox,
+  name=Таблиця
 }
