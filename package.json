@@ -13,7 +13,8 @@
     "update-lib": "node scripts/update-lib.js",
     "prepare-examples": "node scripts/prepare-examples.js",
     "clear-examples": "node scripts/clear-examples.js",
-    "preprocess-images": "python3 scripts/preprocess-images.py"
+    "preprocess-images": "python3 scripts/preprocess-images.py",
+    "detex": "detex dissertation.tex > dissertation-plain-text.txt"
   },
   "dependencies": {
     "request": "^2.88.0",

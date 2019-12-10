@@ -52,6 +52,19 @@
     tabsize=2
 }
 
+\lstdefinestyle{stdOutClearStyle}{
+    commentstyle=\color{codegreen},
+    breakatwhitespace=false,         
+    basicstyle=\normalsize,
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true          
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
 \newcommand{\printCodeListing}[2]{
     \lstinputlisting[numbers=left, caption={#2}]{#1}
 }
@@ -66,7 +79,7 @@
 }
 
 \lstnewenvironment{stdout}[3][]
-  {\lstset{style=stdOutStyle}\lstset{#1}}% Add/update settings locally
+  {\lstset{style=stdOutClearStyle}\lstset{#1}}% Add/update settings locally
   {\begin{codeCaption}[H]
     \caption{#2}
     \label{code:#3}
@@ -74,5 +87,5 @@
 \stepcounter{globalCodeCounter}}
 
 \lstnewenvironment{snippet}[1][]
-  {\lstset{style=stdOutStyle}\lstset{#1}}
+  {\lstset{style=stdOutClearStyle}\lstset{#1}}
   {}

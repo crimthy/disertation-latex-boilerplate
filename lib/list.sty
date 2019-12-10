@@ -6,27 +6,28 @@
 \renewcommand{\labelenumi}{\alph{enumi})}
 \renewcommand{\labelenumii}{\arabic{enumii})}
 \newcommand{\listEnumerated}[1]{
-    \begin{enumerate}[noitemsep,topsep=0pt,leftmargin=6.5ex]
+    \begin{enumerate}[noitemsep,topsep=0pt,wide=0pt,labelindent=\parindent]
         #1
     \end{enumerate}
 }
 
 \newcommand{\listInnerEnumerated}[1]{
-    \begin{enumerate}[noitemsep,topsep=0pt]
+    \begin{enumerate}[noitemsep,topsep=0pt, wide=0pt,labelindent=\parindent + 2.7ex]
         #1
     \end{enumerate}
 }
 
+% label with all lines same indent: \begin{itemize}[noitemsep,topsep=0pt,leftmargin=7ex]
 \renewcommand{\labelitemi}{---}
-\renewcommand\labelitemii{\textbullet}
+\renewcommand\labelitemii{---}
 \newcommand{\listDefault}[1]{
-    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=7ex]
+    \begin{itemize}[noitemsep,topsep=0pt,wide=0pt,labelindent=\parindent]
         #1
     \end{itemize}
 }
 
 \newcommand{\listInnerDefault}[1]{
-    \begin{itemize}[noitemsep,topsep=0pt]
+    \begin{itemize}[noitemsep,topsep=0pt,wide=0pt,labelindent=\parindent + 3ex]
         #1
     \end{itemize}
 }
